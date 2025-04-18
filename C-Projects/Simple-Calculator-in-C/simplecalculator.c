@@ -17,7 +17,7 @@ void exibirMenu(){
         }
         
 void verificarValidadeResposta(char checkAnswer){
-                if (checkAnswer != 'n' && checkAnswer != 's'){
+                if ((checkAnswer != 'n' || checkAnswer != 'N') && (checkAnswer != 's' || checkAnswer != 'S')){
                     printf("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
                     verificarValidadeResposta(checkAnswer);
                 } 
@@ -83,7 +83,14 @@ int main(void){
         if (typeOfOperation != 5){
             printf("Deseja realizar outra operação? (s/n):\n");
             scanf(" %c", &checkAnswer);
-            verificarValidadeResposta(checkAnswer);
+            if ( (checkAnswer == 's' || checkAnswer == 'S')){
+                continue;
+            } else if ( (checkAnswer == 'n' || checkAnswer == 'N')) {
+                break;
+            } else {
+                verificarValidadeResposta(checkAnswer);
+
+            }
         }
 
     } while (checkAnswer =='s');

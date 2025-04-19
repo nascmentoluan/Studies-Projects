@@ -16,6 +16,8 @@ void exibirMenu(){
         
         
 void calculadora(int number1, int number2, int typeOfOperation){
+    exibirMenu();
+    scanf("%d", &typeOfOperation);
             
     switch (typeOfOperation){
         case 1:
@@ -23,7 +25,7 @@ void calculadora(int number1, int number2, int typeOfOperation){
             scanf("%d", &number1);
             printf("Digite o segundo número: \n");
             scanf("%d", &number2);
-            printf("Resultado: %d + %d = %.3f\n", number1, number2, (float)(number1 + number2));            
+            printf("Resultado: %d + %d = %d\n", number1, number2, (number1 + number2));            
             break;
                 
         case 2:
@@ -31,7 +33,7 @@ void calculadora(int number1, int number2, int typeOfOperation){
             scanf("%d", &number1);
             printf("Digite o segundo número: \n");
             scanf("%d", &number2);
-            printf("Resultado: %d - %d = %.3f\n", number1, number2, (float)(number1 - number2));            
+            printf("Resultado: %d - %d = %d\n", number1, number2, (number1 - number2));            
         break;
 
         case 3:
@@ -39,7 +41,7 @@ void calculadora(int number1, int number2, int typeOfOperation){
             scanf("%d", &number1);
             printf("Digite o segundo número: \n");
             scanf("%d", &number2);
-            printf("Resultado: %d * %d = %.3f\n", number1, number2, (float)(number1 * number2));            
+            printf("Resultado: %d * %d = %d\n", number1, number2, (number1 * number2));            
             break;
             
         case 4:
@@ -62,12 +64,8 @@ void calculadora(int number1, int number2, int typeOfOperation){
             break;
 
         default:
-            do {
-                printf("Valor fora do intervalo 1-5. Insira um valor correto e tente novamente.\n");
-                exibirMenu();
-                scanf("%d", &typeOfOperation);
-
-            } while ( typeOfOperation < 1 || typeOfOperation > 5);
+            printf("Valor fora do intervalo 1-5. Insira um valor correto e tente novamente.\n");
+            break;
         }
         
     }
@@ -78,26 +76,20 @@ int main(void){
     char checkAnswer;
 
     do{
-        exibirMenu();
-        scanf("%d", &typeOfOperation);
+        
         calculadora(valor1, valor2, typeOfOperation);
-        if (typeOfOperation != 5){
-            printf("Deseja realizar outra operação? (s/n):\n");
+        printf("Deseja realizar outra operação? (s/n):\n");
+        scanf(" %c", &checkAnswer);
+
+        while (checkAnswer != 's' && checkAnswer != 'S' && checkAnswer != 'n' && checkAnswer != 'N') {
+            printf("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
             scanf(" %c", &checkAnswer);
-            if ( (checkAnswer == 's' || checkAnswer == 'S')){
-            } else if ( (checkAnswer == 'n' || checkAnswer == 'N')) {
-                printf("Obrigado por usar a calculadora! Até a próxima.");
-                break;
-            } else {
-                do {
-                    printf("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
-                    printf("Deseja realizar outra operação? (s/n):\n");
-                    scanf(" %c", &checkAnswer);
-                } while ((checkAnswer != 'n' && checkAnswer != 'N') && (checkAnswer != 's' && checkAnswer != 'S'));
-                
-            }
         }
 
-    } while (checkAnswer =='s');
+    } while (checkAnswer =='s' || checkAnswer == 'S');
+
+    printf("Obrigado por usar a calculadora! Até a próxima.");
+
+    return 0;
 }
 

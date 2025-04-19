@@ -60,6 +60,14 @@ void calculadora(int number1, int number2, int typeOfOperation){
         case 5:
             printf("Obrigado por usar a calculadora! Até a próxima.\n");
             break;
+
+        default:
+            do {
+                printf("Valor fora do intervalo 1-5. Insira um valor correto e tente novamente.\n");
+                exibirMenu();
+                scanf("%d", &typeOfOperation);
+
+            } while ( typeOfOperation < 1 || typeOfOperation > 5);
         }
         
     }

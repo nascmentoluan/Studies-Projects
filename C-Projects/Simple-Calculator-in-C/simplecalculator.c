@@ -23,7 +23,7 @@ void calculadora(int number1, int number2, int typeOfOperation){
             scanf("%d", &number1);
             printf("Digite o segundo número: \n");
             scanf("%d", &number2);
-            printf("Resultado: %d + %d = %d\n", number1, number2, (number1 + number2));            
+            printf("Resultado: %d + %d = %.3f\n", number1, number2, (float)(number1 + number2));            
             break;
                 
         case 2:
@@ -31,7 +31,7 @@ void calculadora(int number1, int number2, int typeOfOperation){
             scanf("%d", &number1);
             printf("Digite o segundo número: \n");
             scanf("%d", &number2);
-            printf("Resultado: %d - %d = %d\n", number1, number2, (number1 - number2));            
+            printf("Resultado: %d - %d = %.3f\n", number1, number2, (float)(number1 - number2));            
         break;
 
         case 3:
@@ -39,20 +39,21 @@ void calculadora(int number1, int number2, int typeOfOperation){
             scanf("%d", &number1);
             printf("Digite o segundo número: \n");
             scanf("%d", &number2);
-            printf("Resultado: %d * %d = %d\n", number1, number2, (number1 * number2));            
+            printf("Resultado: %d * %d = %.3f\n", number1, number2, (float)(number1 * number2));            
             break;
             
         case 4:
+            float valor1, valor2;
             printf("Digite o primeiro número: \n");
-            scanf("%d", &number1);
+            scanf("%f", &valor1);
             printf("Digite o segundo número: \n");
-            scanf("%d", &number2);
+            scanf("%f", &valor2);
 
             if (number2 == 0){
                 printf("Erro: Divisão por zero não é permitida.\n");
                 
             } else{
-                printf("Resultado: %d / %d = %d\n", number1, number2, (number1/number2));            
+                printf("Resultado: %f / %f = %.3f\n", valor1, valor2, (float)(valor1/valor2));            
             }
             break;
             

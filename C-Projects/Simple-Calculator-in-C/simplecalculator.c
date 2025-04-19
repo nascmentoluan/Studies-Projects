@@ -1,6 +1,4 @@
 #include <stdio.h>
-int number1, number2, typeOfOperation;
-char checkAnswer;
 
 
 void exibirMenu(){
@@ -16,29 +14,24 @@ void exibirMenu(){
            "Opção: ");
         }
         
-void verificarValidadeResposta(char checkAnswer){
-                if ((checkAnswer != 'n' || checkAnswer != 'N') && (checkAnswer != 's' || checkAnswer != 'S')){
-                    printf("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
-                    verificarValidadeResposta(checkAnswer);
-                } 
-        }
-void calculadora(int number1, int number2, int typeOfOperation, char checkAnswer){
-    
+        
+void calculadora(int number1, int number2, int typeOfOperation){
+            
     switch (typeOfOperation){
         case 1:
-        printf("Digite o primeiro número: \n");
-        scanf("%d", &number1);
-        printf("Digite o segundo número: \n");
-        scanf("%d", &number2);
-        printf("Resultado: %d + %d = %d\n", number1, number2, (number1 + number2));            
-        break;
-        
+            printf("Digite o primeiro número: \n");
+            scanf("%d", &number1);
+            printf("Digite o segundo número: \n");
+            scanf("%d", &number2);
+            printf("Resultado: %d + %d = %d\n", number1, number2, (number1 + number2));            
+            break;
+                
         case 2:
-        printf("Digite o primeiro número: \n");
-        scanf("%d", &number1);
-        printf("Digite o segundo número: \n");
-        scanf("%d", &number2);
-        printf("Resultado: %d - %d = %d\n", number1, number2, (number1 - number2));            
+            printf("Digite o primeiro número: \n");
+            scanf("%d", &number1);
+            printf("Digite o segundo número: \n");
+            scanf("%d", &number2);
+            printf("Resultado: %d - %d = %d\n", number1, number2, (number1 - number2));            
         break;
 
         case 3:
@@ -49,11 +42,12 @@ void calculadora(int number1, int number2, int typeOfOperation, char checkAnswer
             printf("Resultado: %d * %d = %d\n", number1, number2, (number1 * number2));            
             break;
             
-            case 4:
+        case 4:
             printf("Digite o primeiro número: \n");
             scanf("%d", &number1);
             printf("Digite o segundo número: \n");
             scanf("%d", &number2);
+
             if (number2 == 0){
                 printf("Erro: Divisão por zero não é permitida.\n");
                 
@@ -61,15 +55,13 @@ void calculadora(int number1, int number2, int typeOfOperation, char checkAnswer
                 printf("Resultado: %d / %d = %d\n", number1, number2, (number1/number2));            
             }
             break;
-
-            case 5:
-                printf("Obrigado por usar a calculadora! Até a próxima.\n");
+            
+        case 5:
+            printf("Obrigado por usar a calculadora! Até a próxima.\n");
             break;
-            }
-
-                
-}
-
+        }
+        
+    }
     
 
 int main(void){
@@ -79,17 +71,21 @@ int main(void){
     do{
         exibirMenu();
         scanf("%d", &typeOfOperation);
-        calculadora(valor1, valor2, typeOfOperation, checkAnswer);
+        calculadora(valor1, valor2, typeOfOperation);
         if (typeOfOperation != 5){
             printf("Deseja realizar outra operação? (s/n):\n");
             scanf(" %c", &checkAnswer);
             if ( (checkAnswer == 's' || checkAnswer == 'S')){
-                continue;
             } else if ( (checkAnswer == 'n' || checkAnswer == 'N')) {
+                printf("Obrigado por usar a calculadora! Até a próxima.");
                 break;
             } else {
-                verificarValidadeResposta(checkAnswer);
-
+                do {
+                    printf("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
+                    printf("Deseja realizar outra operação? (s/n):\n");
+                    scanf(" %c", &checkAnswer);
+                } while ((checkAnswer != 'n' && checkAnswer != 'N') && (checkAnswer != 's' && checkAnswer != 'S'));
+                
             }
         }
 

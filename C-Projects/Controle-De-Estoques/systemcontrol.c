@@ -57,20 +57,23 @@ void adicionarItem(){
 
 void exibirEstoque(){
     char nome[50]; 
-    int qtd;
+    int qtd, estaVazio = 1;
 
     FILE * file = fopen("estoque.txt", "r");
 
     if (file == NULL){
-        printf("O estoque está vazio.\n");
     } else{
+        estaVazio = 0;
         printf("\n\n=============================\n");
         printf("        Estoque Atual\n");
         printf("=============================\n");
         while (fscanf(file, "%s %d", &nome, &qtd) != -1 ){
                 printf("Nome: %s\nQuantidade: %d\n\n", nome, qtd);
         }
-        
+    }
+
+    if (estaVazio == 1){
+        printf("O estoque está vazio.\n");
     }
     
     fclose(file);
@@ -104,12 +107,10 @@ void eliminarItem(){
                         fprintf(rascunho, "%s\n%d\n", nome, novaQtd);
                         printf("Quantidade atualizada com sucesso!\n");
                     } else {
-                        novaQtd -= qtd; 
-                        fprintf(rascunho, "%s\n%d\n", nome, novaQtd);
                         printf("Item removido do estoque!\n");
                     }
                 } else {
-                    fprintf(rascunho, "%s\n%d\n", nome, novaQtd);
+                    fprintf(rascunho, "%s\n%d\n", novoNome, novaQtd);
                 }
             }
             fclose(file);

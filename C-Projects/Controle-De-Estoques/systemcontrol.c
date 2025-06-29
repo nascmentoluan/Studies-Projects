@@ -10,6 +10,7 @@ void menu(){
     printf("2. Remover Item\n");
     printf("3. Listar Estoque\n");
     printf("4. Sair\n");
+    printf("Opção:");
 
 }
 
@@ -76,7 +77,7 @@ void exibirEstoque(){
             }
         }
     }
-    if ( itens == 0 && qtd == 0){
+    if ( itens == 0){
         printf("O estoque está vazio.\n");
     }
     
@@ -149,13 +150,16 @@ int main(void){
 
         switch(answer){
             case 1:
-                adicionarItem();                  
+                adicionarItem();
+                continuarFluxo();
                 break;
             case 2:
                 eliminarItem();
+                continuarFluxo();
                 break;
             case 3:
                 exibirEstoque();
+                continuarFluxo();
                 break;
             case 4:
                 printf("Obrigado por usar o Controle de Estoques! Até a próxima.\n");
@@ -164,11 +168,6 @@ int main(void){
                 printf("Opção inválida! Tente novamente.\n");
                 break;
         }
-        int resp = continuarFluxo();
-        if (resp == 1){
-            continue;
-        } else {
-            break;
-        }
+        
     }
 }

@@ -57,22 +57,26 @@ void adicionarItem(){
 
 void exibirEstoque(){
     char nome[50]; 
-    int qtd, estaVazio = 1;
+    int qtd, itens = 0;
 
     FILE * file = fopen("estoque.txt", "r");
 
     if (file == NULL){
     } else{
-        estaVazio = 0;
-        printf("\n\n=============================\n");
-        printf("        Estoque Atual\n");
-        printf("=============================\n");
-        while (fscanf(file, "%s %d", &nome, &qtd) != -1 ){
+            
+        while (fscanf(file, "%s %d", &nome, &qtd) != -1 ){ 
+            if (qtd > 0){
+                if (itens == 0) {
+                    printf("\n\n=============================\n");
+                    printf("        Estoque Atual\n");
+                    printf("=============================\n");
+                    itens = 1;
+                }
                 printf("Nome: %s\nQuantidade: %d\n\n", nome, qtd);
+            }
         }
     }
-
-    if (estaVazio == 1){
+    if ( itens == 0 && qtd == 0){
         printf("O estoque está vazio.\n");
     }
     
